@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIHO_HOME_PAGE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            background-color: #eeeeee;
+        }
+
+        header {
+            width: 100%;
+            background-color: #001f3f;
+            color: #fff;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 10px 20px;
+            color: #ffffff;
+            text-decoration: none;
+            text-align: center;
+            background-color: #003366;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: #004080;
+        }
+
+        main {
+            margin-top: 80px; /* Adjust according to the height of the header */
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .content-section {
+            display: none;
+            padding: 20px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .profile-img.in-view {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        h1 {
+            font-size: 30px;
+            color: #000000;
+            text-align: left;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #000000;
+            text-align: left;
+        }
+
+        p {
+            font-size: 26px;
+            color: #000000;
+            text-align: left;
+        }
+
+        #contact {
+            margin-top: 100px;
+            border-radius: 10px;
+            background-color: #12467a; /* 연락처 배경색 변경 */
+        }
+
+        #contact * {
+            color: #ffffff; /* 연락처 배경색 변경 */
+        }
+        
+        /* 반응형 디자인 */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 26px;
+            }
+
+            p {
+                font-size: 24px;
+            }
+
+            .profile-img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            main {
+                margin-top: 120px; /* Adjust according to the new height of the header */
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            p {
+                font-size: 20px;
+            }
+
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+
+            nav ul li a {
+                padding: 8px 15px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul id="nav-list">
+                <li><a href="#home" class="nav-link" data-target="home">HOME</a></li>
+                <li><a href="#about" class="nav-link" data-target="about">ABOUT ME</a></li>
+                <li><a href="#contact" class="nav-link" data-target="contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="content-section active">
+            <h1>안녕하세요. <br>
+                제 이름은 박기호 (Park Kiho)입니다.
+            </h1>
+            <h2>■ Profile</h2>
+            <img src="https://postfiles.pstatic.net/MjAyNDA1MjRfNjMg/MDAxNzE2NTQzNjQwNjIy.u0Nh2pZTD27H4ZuNSLDNttBlp6_FJRubvW3sw9ER9Twg.Nd48EMuihsYfOEKVZ5zBZDTR8cpfjwWEjqXBSS6k6gAg.JPEG/me.jpg?type=w773" alt="프로필 사진" class="profile-img">
+            <p> 
+                <b>학교</b> : 강원대학교([KNU]Kangwon National University)<br>
+                <b>학과</b> : 컴퓨터공학과(Computer Engineering)<br>
+                <b>전공</b> : 게임 개발(Game Design)<br>
+                <b>이름</b> : 박기호(Park Kiho)<br>
+                <b>주 언어</b> : C/C++
+            </p>
+            <br>
+            <hr>
+            <h2>■ 취미</h2>
+            <img src="https://postfiles.pstatic.net/MjAyNDA1MjlfMjY2/MDAxNzE2OTY3OTMzNTk2.liypFknfCfOmNDDtOm9kVeMcOZEM5GpzLXq8c4jmD5sg._ZxJfKiu69QM1FXppSdD8u7HOzsQQCnI1AzZRuyCX5kg.JPEG/1711773712301.jpg?type=w773" alt="프로필 사진" class="profile-img">
+            <p>    
+                주로 즐겨하는 스포츠는 농구이며, 포지션은 포인트 가드를 맡고 있습니다.<br>
+                농구는 초등학교 때 취미로 시작했고, 지금까지 계속해오고 있으며 현재는 학교 농구 동아리에서 활동하고 있습니다.<br><br>
+            </p>
+            <img src="https://postfiles.pstatic.net/MjAyNDA1MjlfMTk2/MDAxNzE2OTY3OTM0MzE0.2dpveO6MKdv2r5v6zxuUh-izPgLWCO9RbEaz-wwcxbEg.dco7N3bpPj8jxitNYprPQSJB-oQz-z-dT1TVZyCweOgg.JPEG/20230718%EF%BC%BF014825.jpg?type=w773" alt="프로필 사진" class="profile-img">
+            <img src="https://postfiles.pstatic.net/MjAyNDA1MjlfNDMg/MDAxNzE2OTY3OTM0NjI2.4WHdSi3ubCywfmN4eXJz26sPAnP9yljAn2YzD73ic3Ig.rdpMRUAIH4UtF9zEI1pb4Cu5RzlM8frj-CZuXGXd3_cg.JPEG/IMG%EF%BC%BF20201008%EF%BC%BF233514%EF%BC%BF375.jpg?type=w773" alt="프로필 사진" class="profile-img">
+            <p>
+                하루에 1시간 정도는 강아지와 함께 산책을 합니다. <br>
+                우리 집 강아지는 2마리이고, 한 마리는 포메라니안, 다른 한 마리는 말티즈입니다.<br><br>
+            </p>
+            <p>
+                그리고, 저는 OOT를 이용해서 영화, 드라마 등을 시청하는 것을 좋아합니다. <br>
+                장르는 액션, 판타지를 선호합니다.<br>
+            </p>
+        </section>
+        <section id="about" class="content-section">
+            <h1>About Me</h1><hr>
+            <h2>My Career</h2>
+            <p>
+               - 정보처리기능사 취득 (2021)<br>
+               - 정보처리산업기사 취득 (2023)<br>
+               - 리눅스마스터 2급 취득 (2021)<br>
+               - 전적대 취득 학점 (4.39, ~2022) → 장학금 3회 수혜<br>
+               - 코뮤니티 모각코 대외활동 수료 (C, Python)<br>
+               - 코드잇 대외활동 4기 수료<br>
+               - 충청북도 ICT 기관 주최 인공지능 고급과정 수료<br>
+               - [ROKA Army CERT] 육군 정보보호병 (2022 ~ 2023)<br>
+               - 강원대학교 편입 (2024, 3학년)<br>
+            </p>
+            <hr>
+            <h2>My Study</h2>
+            <p>
+                <a href="https://www.notion.so/Portfolio-3015e7a837844411a083b3e9efe6bead">
+                    <img src="https://lh6.googleusercontent.com/proxy/0hfdNkJRpzebG1eEZWTmx-RE22vmTWwOlgzd6gH2d_Q09AWzopBPhyRTWs8AiyJwrcxKlt_TOaE1nsp7p4yOXiFp8Vmg4Oqs2ABceGKyqZ2K8S709X2Dzz1vjVskzMqHqggHNtZOBjmDvsWuUIrBxKABoJxSToyNAAOPPbzjNBq4w28tutnw6rps" alt="Description of the image" style="width:50px;height:50px;">
+                </a>
+                ← 클릭해보세요!
+            </p>
+            <p>
+                <b>: 저는 Notion을 이용해서 Portfolio 관리, 공부 내용 정리 등을 하고 있습니다.</b>
+            </p>
+            <hr>
+            <h2>My Plan</h2>
+            <p>
+                1. C/C++ → 자료구조 → Unity / Unreal C++ → ● ● ● (계획중)<br>
+                2. 게임잼 참가<br>
+                3. 대외활동 참가<br>
+                4. 해커톤 참가<br>
+            </p>
+        </section>
+        <section id="contact" class="content-section">
+            <a href="mailto:gpkiho000811@naver.com">
+                <img src="https://postfiles.pstatic.net/MjAyNDA1MjRfNjMg/MDAxNzE2NTQzNjQwNjIy.u0Nh2pZTD27H4ZuNSLDNttBlp6_FJRubvW3sw9ER9Twg.Nd48EMuihsYfOEKVZ5zBZDTR8cpfjwWEjqXBSS6k6gAg.JPEG/me.jpg?type=w773" alt="Description of the image" style="width:60px;height:55px;">
+            </a><hr>
+            <h1>{연락처}</h1>
+            <p>E-Mail: <a href="mailto:gpkiho000811@naver.com">gpkiho000811@naver.com</a></p>
+        </section>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const navLinks = document.querySelectorAll(".nav-link");
+            const sections = document.querySelectorAll(".content-section");
+
+            navLinks.forEach(link => {
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    const targetId = this.getAttribute("data-target");
+
+                    sections.forEach(section => {
+                        section.classList.remove("active");
+                        if (section.id === targetId) {
+                            section.classList.add("active");
+                        }
+                    });
+                });
+            });
+
+            const images = document.querySelectorAll('.profile-img');
+
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            images.forEach(image => {
+                observer.observe(image);
+            });
+        });
+    </script>
+</body>
+</html>
