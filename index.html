@@ -85,11 +85,18 @@
             opacity: 0;
             transform: translateX(-100px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            border-radius: 50px;
         }
 
         .profile-img.in-view {
             opacity: 1;
             transform: translateX(0);
+        }
+
+        #intro h1 {
+            font-size: 50px;
+            color: #56d6ec;
+            text-align: center;
         }
 
         h1 {
@@ -118,6 +125,14 @@
 
         #contact * {
             color: #ffffff;
+        }
+
+        #contact p:nth-of-type(1) {
+            color: #00FF00;
+        }
+
+        #contact p:nth-of-type(2) {
+            color: #FFFF00;
         }
         
         /* 반응형 디자인 */
@@ -210,25 +225,49 @@
             }
         }
 
+        .fade-in {
+            animation: fadeIn 0.5s forwards;
+        }
+
+        .fade-out {
+            animation: fadeOut 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <nav>
             <ul id="nav-list">
-                <li><a href="#home" class="nav-link" data-target="home">HOME</a></li>
-                <li><a href="#about" class="nav-link" data-target="about">ABOUT ME</a></li>
+                <li><a href="#intro" class="nav-link" data-target="intro">INTRO</a></li>
+                <li><a href="#about" class="nav-link" data-target="about">About Me</a></li>
                 <li><a href="#contact" class="nav-link" data-target="contact">CONTACT</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section id="home" class="content-section active">
-            <h1>안녕하세요. <br>
-                제 이름은 박기호 (Park Kiho)입니다.
+        <section id="intro" class="content-section active">
+            <h1>방문해 주셔서 감사합니다! <br>
             </h1>
             <hr>
-            <h2>■ Profile</h2>
+            <h2>{ Profile }</h2>
             <img src="https://github.com/handsomekiho/kiho_page/blob/main/Web_Image/me.jpg?raw=true" alt="프로필 사진" class="profile-img">
             <p> 
                 <b>학교</b> : 강원대학교([KNU]Kangwon National University)<br>
@@ -239,7 +278,7 @@
             </p>
             <br>
             <hr>
-            <h2>■ 취미</h2>
+            <h2>♥ Hobby ♥</h2>
             <img src="https://github.com/handsomekiho/kiho_page/blob/main/Web_Image/basketball.jpg?raw=true" alt="프로필 사진" class="profile-img">
             <p>    
                 주로 즐겨하는 스포츠는 농구이며, 포지션은 포인트 가드를 맡고 있습니다.<br>
@@ -293,10 +332,15 @@
         </section>
         <section id="contact" class="content-section">
             <a href="mailto:gpkiho000811@naver.com">
-                <img src="https://github.com/handsomekiho/kiho_page/blob/main/Web_Image/me.jpg?raw=true" alt="Description of the image" style="width:60px;height:55px;">
-            </a><hr>
-            <h1>{연락처}</h1>
+                <img src="https://github.com/handsomekiho/kiho_page/blob/main/Web_Image/naver_mail.jpg?raw=true" alt="Description of the image" style="width:60px;height:55px;">
+            </a>
+            <a href="https://open.kakao.com/o/sLUCMxug">
+                <img src="https://github.com/handsomekiho/kiho_page/blob/main/Web_Image/kakaotalk.jpg?raw=true" alt="Description of the image" style="width:60px;height:55px;">
+            </a>
+            <hr>
+            <h1>☎ 연락처</h1>
             <p>E-Mail: <a href="mailto:gpkiho000811@naver.com">gpkiho000811@naver.com</a></p>
+            <p>KakaoTalk: <a href="https://open.kakao.com/o/sLUCMxug">https://open.kakao.com</a></p>
         </section>
     </main>
     <script>
@@ -308,11 +352,18 @@
                 link.addEventListener("click", function(event) {
                     event.preventDefault();
                     const targetId = this.getAttribute("data-target");
+                    const targetSection = document.getElementById(targetId);
 
                     sections.forEach(section => {
-                        section.classList.remove("active");
-                        if (section.id === targetId) {
-                            section.classList.add("active");
+                        if (section.classList.contains("active")) {
+                            section.classList.add("fade-out");
+                            section.addEventListener("animationend", function() {
+                                section.classList.remove("active", "fade-out");
+                                targetSection.classList.add("active", "fade-in");
+                                targetSection.addEventListener("animationend", function() {
+                                    targetSection.classList.remove("fade-in");
+                                }, { once: true });
+                            }, { once: true });
                         }
                     });
                 });
